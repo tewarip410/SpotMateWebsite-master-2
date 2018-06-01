@@ -6,6 +6,7 @@
 .container-fluid{
 	background-color: white;
 	color: black;
+	text-align: center;
 }
 
 
@@ -81,7 +82,7 @@ html {
 }
 
 hr {
-    width: 400px;
+    width: 50%;
     border-top: 1px solid #f8f8f8;
     border-bottom: 1px solid rgba(0,0,0,0.2);
 }
@@ -111,7 +112,13 @@ hr {
 	margin: 5px 50px;
 }
 
-
+/
+/*business*/
+button, input, optgroup, select, textarea {
+    margin: 10px;
+    font: inherit;
+    color: inherit;
+}
 /*Contact*/
 
 .contactcontainer{
@@ -119,9 +126,7 @@ hr {
 	text-align: center;
 
 }
-.contactcontainer h4{
-	margin-bottom: 70px;
-}
+
 .contactcontainer .form-group{
 	margin: 20px 150px;
 }

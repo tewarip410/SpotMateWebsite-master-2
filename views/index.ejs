@@ -28,10 +28,10 @@
 				</div>
 				<div class="collapse navbar-collapse" id="bs-nav-demo">
 					<ul class="nav navbar-nav navbar-right nav-underline">
-						<li ><a href="#how_it_works">How it Works</a></li>
-						<!-- <li><a href="#">Partners</a></li>
-						<li><a href="#">Sign Up</a></li> -->
+						<li ><a href="#how_it_works">About</a></li>
+						<li><a href="#merchant">Businesses</a></li>
 						<li><a href="#contact_us">Contact</a></li>
+						<li><a href="#">Log-In</a></li>
 					</ul>
 				</div>
 			</div>
@@ -51,32 +51,73 @@
 	 				<h3 class="speciallp">Meet People. Go to the Gym. Get Rewarded.</h3>
 	 				<hr>
 	 				<h3>Are you a business owner?</h3>
-	 				<button class="btn btn-default btn-lg">Get Started!</button>
+	 				<a href="#merchant"><button class="btn btn-default btn-lg">Get Started!</button></a>
 	 			</div>
 	 		</div>
 	 	</div>
 	 </div>
 
+	<!-- HOW IT WORKS -->
 
 
-	 <form role="form" id="merchant" class="container-fluid contactcontainer" method="POST" action="/merchant">
-			<h1>Merchant</h1>
-			<a href="login" ><button class="btn btn-default btn-lg">
-				<i class=""></i> Log In
-			</button></a>
-			<div class="form-group">
-				<div class="form-row">
-					<select id="business_type_select" class="selectpicker">
-						<option value="none" disabled selected> What type of business are you? </option>
-						<option value="local">Brick and Mortar</option>
-						<option value="online">E-Commerce</option>
-						<option value="both">Both</option>
-					</select>
+
+		<div id = "how_it_works" class="container-fluid howcontainer">
+		  	<div class="row">
+		  		<h1>About SpotMate</h1>
+		  		<hr>
+				<p>SpotMate is a new mobile application that gives students rewards for going to the gym. Simply schedule workouts with or without people, check in when you go to the gym, and start gaining points. Points are then used at local and online businesses for awesome student discounts, coupons, or gifts!</p>
+			    <div class="col-lg-4 col-md-4 col-sm-4">
+				    <div class="thumbnail"><img class = "imghow" src="img/image1.jpg"></div>
+				   
+				    <h3 class = "h3how">Meet People</h3>
+				    <p class = "phow">Discover people and schedule workouts with them.</p>
 				</div>
+			    <div class="col-lg-4 col-md-4 col-sm-4">
+			    	<div class="thumbnail"><img class = "imghow" src="img/image2.jpg"></div>
+			    	
+			    	<h3 class = "h3how">Go to the gym</h3>
+ 				    <p class = "phow">Check in at the gym whenever you go to workout.</p>
+			    </div>
+			    <div class="col-lg-4 col-md-4 col-sm-4">
+			    	<div class="thumbnail"><img class = "imghow" src="img/image3.jpg"></div>
+			    	
+			    	<h3 class = "h3how">Get Rewarded</h3>
+				    <p class = "phow">Redeem points for exclusive deals and coupons!</p>
+				</div>
+		     </div>
+		
+		</div>
+
+		
+
+		<!-- BUSINESS -->
+
+	 <form role="form" id="merchant" class="container-fluid howcontainer" method="POST" action="/merchant">
+			<div class="row">
+		  		<h1>For Business</h1>
+		  		<hr>
+				<p>Join the SpotMate platform to advertise towards the student population. We grow businesses like yours by exposing students to local deals, bringing them into your store, and turning them into loyal customers.</p>
+			</div>
+			<div class = "row">
+				<h3>This is how it works: </h3>
 			</div>
 
-			<div id="contact_form" class="form-group" style="display: none;">
-				<div class="col-sm-12">
+			<div class="row">
+				<h4>Get Started with SpotMate Now</h4>
+				<div class="form-group">
+					<div class="form-row">
+						<select id="business_type_select" class="selectpicker">
+							<option value = "none" selected> What type of business are you? </option>
+							<option value="local">Brick and Mortar</option>
+							<option value="online">E-Commerce</option>
+							<option value="both">Both</option>
+						</select>
+					</div>
+				</div>
+			</div>
+				
+			<div id="contact_form" class="row form-group" style="display: none;">
+				<!-- <div class="col-sm-12">
 					<div class="local_field">
 						<div class="form-group">
 							<select name="plan" class="selectpicker">
@@ -85,8 +126,8 @@
 							</select>
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-6">
+				</div> -->
+				<!-- <div class="col-lg-6">
 					<div class= "local_field howcontainer" style="padding-left: 0; padding-right: 0; margin-bottom: 30px; cursor: pointer; border-radius: 5px; border-style: solid; border-color: #dbdbdb; border-width: 1px;">
 						<h5 style="background-color: #00d793; border-top-left-radius: 5px;border-top-right-radius: 5px;">Contract Subscription</h5>
             <ul>
@@ -112,9 +153,9 @@
                 	</li>
             	</ul>
 					</div>
-				</div>
+				</div> -->
 
-				<div class="col-lg-6">
+				<!-- <div class="col-lg-6">
 					<div class="local_field howcontainer" style="padding-left: 0; padding-right: 0; margin-bottom: 30px; cursor: pointer; border-radius: 5px; border-style: solid; border-color: #dbdbdb; border-width: 1px;">
 						<h5 style="background-color: #00d793; border-top-left-radius: 5px;border-top-right-radius: 5px;">Contract Subscription</h5>
             <ul>
@@ -139,7 +180,7 @@
                 	</li>
             	</ul>
 					</div>
-				</div>
+				</div> -->
 				<div class="col-lg-6">
 					<input name="business_name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Business Name" required>
 					<input name="business_phone" type="text" class="form-control" id="formGroupExampleInput" placeholder="Business Phone" required>
@@ -167,71 +208,45 @@
 						<input name="additional_comments" type="text" class="form-control" id="formGroupExampleInput" placeholder="Additional Comments" rows="3">
 					</div>
 				</div>
-			</div>
-
-			<div class="form-group">
 				<div class="form-row">
 					<div class="col-md-12">
 		  			<button type="submit" class="btn btn-info">Send</button>
 					</div>
 				</div>
 			</div>
+
+			<div class="row">
+				<hr>
+				<h4>Already an existing SpotMate Business?</h4>
+				<a href="" class="btn btn-info btn-lg">Log-In</a>
+			</div>
+			
+
+			
 		</form>
-
-		</div>
-		<!-- HOW IT WORKS -->
-
-
-
-		<div id = "how_it_works" class="container-fluid howcontainer">
-		  	<div class="row">
-		  		<h1>How it Works</h1>
-		  		<hr>
-				<p>SpotMate is a new mobile application that gives students rewards for going to the gym. Simply schedule workouts with or without people, check in when you go to the gym, and start gaining points. Points are then used at local and online businesses for awesome student discounts, coupons, or gifts!</p>
-			    <div class="col-lg-4 col-md-4 col-sm-4">
-				    <div class="thumbnail"><img class = "imghow" src="img/image1.jpg"></div>
-				   
-				    <h3 class = "h3how">Meet People</h3>
-				    <p class = "phow">Discover people and schedule workouts with them.</p>
-				</div>
-			    <div class="col-lg-4 col-md-4 col-sm-4">
-			    	<div class="thumbnail"><img class = "imghow" src="img/image2.jpg"></div>
-			    	
-			    	<h3 class = "h3how">Go to the gym</h3>
- 				    <p class = "phow">Check in at the gym whenever you go to workout.</p>
-			    </div>
-			    <div class="col-lg-4 col-md-4 col-sm-4">
-			    	<div class="thumbnail"><img class = "imghow" src="img/image3.jpg"></div>
-			    	
-			    	<h3 class = "h3how">Get Rewarded</h3>
-				    <p class = "phow">Redeem points for exclusive deals and coupons!</p>
-				</div>
-		     </div>
-		
-		</div>
+	
 
 		<!-- CONTACT -->
 
-
-
-		<form action="/contact" method="POST" class="container-fluid contactcontainer">
+		<div id = "contact_us"class="container-fluid contactcontainer">
 			<h1>Contact Us</h1>
-
+			<hr>
 			<h4>Have questions, comments, or concerns? Submit your message into the form below.</h4>
-			<div class="form-group">
-				<input name="contact_name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Name" required="required">
-			</div>
+			<form  action="/contact" method="POST" >
+				<div class="form-group">
+					<input name="contact_name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Name" required="required">
+				</div>
 
-			<div class="form-group">
-				<input name="contact_email" type="email" class="form-control" id="exampleFormControlInput1"placeholder="name@example.com" required="required">
-			</div>
+				<div class="form-group">
+					<input name="contact_email" type="email" class="form-control" id="exampleFormControlInput1"placeholder="name@example.com" required="required">
+				</div>
 
-			<div class="form-group">
-				<textarea name="contact_message" class="form-control" id="exampleFormControlTextarea1" rows="5"placeholder="Your Message" required="required"></textarea>
-			</div>
+				<div class="form-group">
+					<textarea name="contact_message" class="form-control" id="exampleFormControlTextarea1" rows="5"placeholder="Your Message" required="required"></textarea>
+				</div>
 
-		  	<button type="submit" class="btn btn-info">Send</button>
-		</form>
+			  	<button type="submit" class="btn btn-info">Send</button>
+			</form>
 
 		</div>
 
