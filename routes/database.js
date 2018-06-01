@@ -81,5 +81,13 @@ module.exports = {
       db.run(sql, data, function(err, results) {
           if (err) throw err;
       });
+  },
+
+  findMerchantCoupons: function(merchant_id, callback) {
+    let sql = 'SELECT * FROM coupons WHERE merchant_id = \'' + merchant_id + '\';';
+    db.all(sql, function(err, results) {
+        if (err) throw err;
+        callback(results);
+    })
   }
 }
