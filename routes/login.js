@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/login', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('login');
 });
 
@@ -12,7 +12,7 @@ router.post('/', function(req, res) {
   if (password == 'letmein') {
     res.redirect('/dashboard');
   } else {
-    res.redirect('/index');
+    res.redirect('/login');
   }
 });
 
