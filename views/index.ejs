@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/gif/png" href="img/blacklogo.png">
+		<base href="/../">
+
+		<title>SPOTMATE</title>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+	</head>
+
+	<body class="parallax">
+		<!-- NAVBAR -->
+
+		<nav class="navbar navbar-expand-lg navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+		      		</button>
+					<a href="#" class="navbar-brand"><img class = "logo"src="img/logo.png">SPOTMATE</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-nav-demo">
+					<ul class="nav navbar-nav navbar-right nav-underline">
+						<li ><a href="#how_it_works">How it Works</a></li>
+						<!-- <li><a href="#">Partners</a></li>
+						<li><a href="#">Sign Up</a></li> -->
+						<li><a href="#contact_us">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!-- HOME -->
+
+	<div class="container landing">
+	 	<div class="row">
+	 		<div class="col-lg-12">
+	 			<div class="content">
+	 				<video autoplay loop muted id="background">
+    					<source src="img/spotvid.mp4" type="video/mp4">
+					</video>
+
+			 		<img src="img/logowithtext.png" height="200px" width="200px">
+	 				<h3 class="speciallp">Meet People. Go to the Gym. Get Rewarded.</h3>
+	 				<hr>
+	 				<h3>Are you a business owner?</h3>
+	 				<button class="btn btn-default btn-lg">Get Started!</button>
+	 			</div>
+	 		</div>
+	 	</div>
+	 </div>
+
+
+
+	 <form role="form" id="merchant" class="container-fluid contactcontainer" method="POST" action="/merchant">
+			<h1>Merchant</h1>
+			<a href="login" ><button class="btn btn-default btn-lg">
+				<i class=""></i> Log In
+			</button></a>
+			<div class="form-group">
+				<div class="form-row">
+					<select id="business_type_select" class="selectpicker">
+						<option value="none" disabled selected> What type of business are you? </option>
+						<option value="local">Brick and Mortar</option>
+						<option value="online">E-Commerce</option>
+						<option value="both">Both</option>
+					</select>
+				</div>
+			</div>
+
+			<div id="contact_form" class="form-group" style="display: none;">
+				<div class="col-sm-12">
+					<div class="local_field">
+						<div class="form-group">
+							<select name="plan" class="selectpicker">
+								<option>Contract Subscription</option>
+								<option>Pay for Redemptions</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class= "local_field howcontainer" style="padding-left: 0; padding-right: 0; margin-bottom: 30px; cursor: pointer; border-radius: 5px; border-style: solid; border-color: #dbdbdb; border-width: 1px;">
+						<h5 style="background-color: #00d793; border-top-left-radius: 5px;border-top-right-radius: 5px;">Contract Subscription</h5>
+            <ul>
+              	<li>
+                  	<h6>Most Popular</h6>
+                  	<span class="time-ago">The easiest ways to grow sales</span>
+                  	<br/>
+              	</li>
+              	<li>
+                  	<h6>Program Benefits</h6>
+                  	<ul style="list-style: none;">
+                      	<li><span class="time-ago">Coupon Settings</span></li>
+                      	<li><span class="time-ago">Business Performance Analytics & Reporting</span></li>
+                      	<li><span class="time-ago">Dedicated Customer Success Support</span></li>
+                      	<li><span class="time-ago">POP Marketing Materials</span></li>
+                  	</ul>
+                	</li>
+
+                	<li>
+                    	<h6>$99 Per Month</h6>
+                    	<br/>
+                    	<span class="time-ago">Fill out form below to get started</span>
+                	</li>
+            	</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-6">
+					<div class="local_field howcontainer" style="padding-left: 0; padding-right: 0; margin-bottom: 30px; cursor: pointer; border-radius: 5px; border-style: solid; border-color: #dbdbdb; border-width: 1px;">
+						<h5 style="background-color: #00d793; border-top-left-radius: 5px;border-top-right-radius: 5px;">Contract Subscription</h5>
+            <ul>
+              	<li>
+                  	<h6>Most Popular</h6>
+                  	<span class="time-ago">The easiest ways to grow sales</span>
+                  	<br/>
+              	</li>
+              	<li>
+                  	<h6>Program Benefits</h6>
+                  	<ul style="list-style: none;">
+                      	<li><span class="time-ago">Coupon Settings</span></li>
+                      	<li><span class="time-ago">Business Performance Analytics & Reporting</span></li>
+                      	<li><span class="time-ago">Dedicated Customer Success Support</span></li>
+                      	<li><span class="time-ago">POP Marketing Materials</span></li>
+                  	</ul>
+                	</li>
+                	<li>
+                    	<h6>$99 Per Month</h6>
+                    	<br/>
+                    	<span class="time-ago">Fill out form below to get started</span>
+                	</li>
+            	</ul>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<input name="business_name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Business Name" required>
+					<input name="business_phone" type="text" class="form-control" id="formGroupExampleInput" placeholder="Business Phone" required>
+					<input name="business_address" type="text" class="form-control" id="formGroupExampleInput" placeholder="Business Address" required>
+					<input name="business_city" type="text" class="form-control" id="formGroupExampleInput" placeholder="Business City" required>
+					<input name="business_state" type="text" class="form-control" id="formGroupExampleInput" placeholder="Business State" required>
+					<input name="business_website" type="text" class="form-control online_field" id="formGroupExampleInput" placeholder="Business Website">
+					<input name="business_category" type="text" class="form-control online_field" id="formGroupExampleInput" placeholder="Business Category">
+					<input name="business_platform" type="text" class="form-control online_field" id="formGroupExampleInput" placeholder="E-Commerce platform">
+				</div>
+				<div class="col-lg-6">
+					<div>
+						<input name="full_name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Full Name" required="required">
+					</div>
+					<div>
+						<input name="title" type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" required="required">
+					</div>
+					<div>
+						<input name="email_address" type="email" class="form-control" id="formGroupExampleInput" placeholder="Email Address">
+					</div>
+					<div>
+						<input name="phone_number" type="text" class="form-control" id="formGroupExampleInput" placeholder="Phone Number" required="required">
+					</div>
+					<div>
+						<input name="additional_comments" type="text" class="form-control" id="formGroupExampleInput" placeholder="Additional Comments" rows="3">
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="form-row">
+					<div class="col-md-12">
+		  			<button type="submit" class="btn btn-info">Send</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		</div>
+		<!-- HOW IT WORKS -->
+
+
+
+		<div id = "how_it_works" class="container-fluid howcontainer">
+		  	<div class="row">
+		  		<h1>How it Works</h1>
+		  		<hr>
+				<p>SpotMate is a new mobile application that gives students rewards for going to the gym. Simply schedule workouts with or without people, check in when you go to the gym, and start gaining points. Points are then used at local and online businesses for awesome student discounts, coupons, or gifts!</p>
+			    <div class="col-lg-4 col-md-4 col-sm-4">
+				    <div class="thumbnail"><img class = "imghow" src="img/image1.jpg"></div>
+				   
+				    <h3 class = "h3how">Meet People</h3>
+				    <p class = "phow">Discover people and schedule workouts with them.</p>
+				</div>
+			    <div class="col-lg-4 col-md-4 col-sm-4">
+			    	<div class="thumbnail"><img class = "imghow" src="img/image2.jpg"></div>
+			    	
+			    	<h3 class = "h3how">Go to the gym</h3>
+ 				    <p class = "phow">Check in at the gym whenever you go to workout.</p>
+			    </div>
+			    <div class="col-lg-4 col-md-4 col-sm-4">
+			    	<div class="thumbnail"><img class = "imghow" src="img/image3.jpg"></div>
+			    	
+			    	<h3 class = "h3how">Get Rewarded</h3>
+				    <p class = "phow">Redeem points for exclusive deals and coupons!</p>
+				</div>
+		     </div>
+		
+		</div>
+
+		<!-- CONTACT -->
+
+
+
+		<form action="/contact" method="POST" class="container-fluid contactcontainer">
+			<h1>Contact Us</h1>
+
+			<h4>Have questions, comments, or concerns? Submit your message into the form below.</h4>
+			<div class="form-group">
+				<input name="contact_name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Name" required="required">
+			</div>
+
+			<div class="form-group">
+				<input name="contact_email" type="email" class="form-control" id="exampleFormControlInput1"placeholder="name@example.com" required="required">
+			</div>
+
+			<div class="form-group">
+				<textarea name="contact_message" class="form-control" id="exampleFormControlTextarea1" rows="5"placeholder="Your Message" required="required"></textarea>
+			</div>
+
+		  	<button type="submit" class="btn btn-info">Send</button>
+		</form>
+
+		</div>
+
+
+		<!-- FOOTER -->
+		<footer>
+			<div class="container-fluid foot">
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-4">
+						<span class="copyright">Copyright © 2018 TMP LLC. 
+						All Rights Reserved.</span>
+					</div>
+
+					<div class="col-lg-4 col-md-4 col-sm-4">
+						<ul class="list-inline socialbuttons">
+							<li class="list-inline-item">
+								<a href="https://www.facebook.com/spotmate.co/">
+									<i size ="3px"class="fab fa-facebook icon-2x"></i>
+								</a>
+							</li>
+
+							<li class="list-inline-item">
+								<!-- <a href="https://www.twitter.com">
+									<i size ="3px"class="fab fa-twitter"></i>
+								</a> -->
+							</li>
+
+							<li class="list-inline-item">
+								<a href="https://www.instagram.com/spotmate.co">
+									<i size ="3px"class="fab fa-instagram"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="col-lg-4 col-md-4 col-sm-4">
+						<ul class="list-inline privacyterms">
+							<li class="list-inline-item">
+								<a href="#">
+									Privacy Policy
+								</a>
+							</li>
+							<li class="list-inline-item">
+								<a href="#">
+									Terms of Use
+								</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</footer>
+
+		<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.js"></script>
+		<script src="js/bootstrap-select.min.js"></script>
+		<script src="js/homepage.js">
+
+
+		</script>
+	</body>
+</html>
