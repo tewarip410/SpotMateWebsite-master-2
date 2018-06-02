@@ -12,7 +12,7 @@ router.post('/', function(req, res) {
   if (password == 'letmein') {
     res.redirect('/dashboard');
   } else {
-    res.redirect('/index');
+    res.redirect('/login');
   }
 });
 
