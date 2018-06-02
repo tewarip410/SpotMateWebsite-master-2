@@ -26,6 +26,7 @@ db.run('CREATE TABLE IF NOT EXISTS merchants (' +
 
 db.run('CREATE TABLE IF NOT EXISTS coupons (' +
     'coupon_id INTEGER PRIMARY KEY AUTOINCREMENT,' +
+    'merchant_id INTEGER NOT NULL,' +
     'name varchar(255) NOT NULL,' +
     'description varchar(255),' +
     'redemed INTEGER NOT NULL,' +
@@ -49,6 +50,16 @@ db.run('CREATE TABLE IF NOT EXISTS coupons (' +
 ); */
 
 module.exports = {
+  findMerchantByLogin: function(merchant, callback) {
+    const sql = 'SELECT * FROM merchants WHERE ' +
+                'email = \'' + merchant.email + '\' AND ' +
+                'password = \'' + merchant.password + '\';';
+    db.all(sql, function(err, results) {
+      if (err) throw err;
+      callback(results[0]);
+    })
+  },
+
   findMerchantByID: function(id, callback) {
       let sql = 'SELECT * FROM merchants WHERE merchant_id = \'' + id + '\';';
       db.all(sql, function(err, results) {
@@ -64,6 +75,14 @@ module.exports = {
       db.run(sql, data, function(err, results) {
           if (err) throw err;
       });
+  },
+
+  getCoupons: function(merchant_id, callback) {
+    const sql = 'SELECT * FROM coupons;';
+    db.all(sql, function(err, results) {
+      if (err) throw err;
+      callback(results);
+    })
   },
 
   findCouponByID: function(id, callback) {

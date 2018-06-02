@@ -5,7 +5,10 @@ const expressLayouts = require('express-ejs-layouts');
 router.use(expressLayouts);
 
 router.get('/', function(req, res, next) {
-  res.render('dashboard');
+  db.getCoupons(function(coupons) {
+    res.render('dashboard', { coupons: coupons });
+  })
+
 });
 
 module.exports = router;
