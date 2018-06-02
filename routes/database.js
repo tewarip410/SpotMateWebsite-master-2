@@ -8,10 +8,10 @@ var db = new sqlite3.Database('./database/spotmate.db', sqlite3.OPEN_READWRITE |
     console.log('Connected to the in-memory SQlite database.');
 });
 
-//db.run('DROP TABLE groups', function(err) {
-//  if (err) throw err;
-//
-//});
+db.run('DROP TABLE coupons', function(err) {
+  if (err) throw err;
+
+});
 
 db.run('CREATE TABLE IF NOT EXISTS merchants (' +
     'merchant_id INTEGER PRIMARY KEY AUTOINCREMENT,' +
@@ -26,7 +26,6 @@ db.run('CREATE TABLE IF NOT EXISTS merchants (' +
 
 db.run('CREATE TABLE IF NOT EXISTS coupons (' +
     'coupon_id INTEGER PRIMARY KEY AUTOINCREMENT,' +
-    'merchant_id INTEGER NOT NULL,' +
     'name varchar(255) NOT NULL,' +
     'description varchar(255),' +
     'redemed INTEGER NOT NULL,' +
@@ -77,7 +76,7 @@ module.exports = {
       });
   },
 
-  getCoupons: function(merchant_id, callback) {
+  getCoupons: function(callback) {
     const sql = 'SELECT * FROM coupons;';
     db.all(sql, function(err, results) {
       if (err) throw err;
@@ -94,7 +93,7 @@ module.exports = {
   },
 
   addCoupon: function(coupon) {
-      let sql = 'INSERT INTO coupons (name, descripton, redemed, remaining) VALUES (?, ?, ?, ?)';
+      let sql = 'INSERT INTO coupons (name, description, redemed, remaining) VALUES (?, ?, ?, ?)';
       let data = [coupon.name, coupon.descripton, coupon.redemed, coupon.remaining];
 
       db.run(sql, data, function(err, results) {
