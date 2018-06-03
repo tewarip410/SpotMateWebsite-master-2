@@ -71,6 +71,12 @@ router.get('/manage-coupons', isLoggedIn, function(req, res, next) {
   });
 })
 
+router.get('/support', isLoggedIn, function(req, res, next) {
+  res.render('./merchant/support');
+});
+
+
+
 function isLoggedIn(req, res, next) {
   if(req.isAuthenticated()) {
     return next();
