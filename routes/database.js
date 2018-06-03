@@ -8,10 +8,10 @@ var db = new sqlite3.Database('./database/spotmate.db', sqlite3.OPEN_READWRITE |
     console.log('Connected to the in-memory SQlite database.');
 });
 
-db.run('DROP TABLE IF EXISTS coupons', function(err) {
-  if (err) throw err;
-
-});
+// db.run('DROP TABLE IF EXISTS coupons', function(err) {
+//   if (err) throw err;
+//
+// });
 
 db.run('CREATE TABLE IF NOT EXISTS merchants (' +
     'merchant_id INTEGER PRIMARY KEY AUTOINCREMENT,' +
@@ -94,7 +94,7 @@ module.exports = {
 
   addCoupon: function(coupon) {
       let sql = 'INSERT INTO coupons (name, description, redemed, remaining) VALUES (?, ?, ?, ?)';
-      let data = [coupon.name, coupon.descripton, coupon.redemed, coupon.remaining];
+      let data = [coupon.name, coupon.description, coupon.redemed, coupon.remaining];
 
       db.run(sql, data, function(err, results) {
           if (err) throw err;
