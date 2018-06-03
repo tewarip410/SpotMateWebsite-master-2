@@ -60,7 +60,7 @@ module.exports = {
   },
 
   findMerchantByID: function(id, callback) {
-      let sql = 'SELECT * FROM merchants WHERE merchant_id = \'' + id + '\';';
+      let sql = 'SELECT * FROM merchants WHERE merchant_id = ' + id + ';';
       db.all(sql, function(err, results) {
           if (err) throw err;
           callback(results[0]);
@@ -85,7 +85,7 @@ module.exports = {
   },
 
   findCouponByID: function(id, callback) {
-      let sql = 'SELECT * FROM coupons WHERE coupon_id = \'' + id + '\';';
+      let sql = 'SELECT * FROM coupons WHERE coupon_id = ' + id + ';';
       db.all(sql, function(err, results) {
           if (err) throw err;
           callback(results[0]);
@@ -101,8 +101,16 @@ module.exports = {
       });
   },
 
+  deleteCouponByID: function(id) {
+    let sql = 'DELETE FROM coupons WHERE coupon_id = ' + id + ' ;';
+    db.run(sql, function(err, results) {
+        console.log(results);
+        if (err) throw err;
+    })
+  },
+
   findMerchantCoupons: function(merchant_id, callback) {
-    let sql = 'SELECT * FROM coupons WHERE merchant_id = \'' + merchant_id + '\';';
+    let sql = 'SELECT * FROM coupons WHERE merchant_id = ' + merchant_id + ';';
     db.all(sql, function(err, results) {
         if (err) throw err;
         callback(results);
