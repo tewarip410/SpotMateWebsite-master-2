@@ -5,24 +5,24 @@ $('#business_type_select').on("change", function(e) {
 
   $("#business_type_select").css("border", "solid 1px #eaeaea");
   var val = $("#business_type_select").val();
-   
+
   if(val == "local") {
-    $(".local_field").css('display', 'block');
+    $(".local_field").css('display', 'true');
     $(".online_field").css('display', 'none');
     $(".local_field").attr('required', 'required');
     $(".online_field").removeAttr('required');
   }
   else if(val == "online") {
     $(".local_field").css('display', 'none');
-    $(".online_field").css('display', 'block');
+    $(".online_field").css('display', 'true');
     $(".local_field").removeAttr('required');
     $(".online_field").attr('required', 'required');
 
     console.log($(".online_field"));
   }
   else if(val == "both") {
-    $(".local_field").css('display', 'block');
-    $(".online_field").css('display', 'block');
+    $(".local_field").css('display', 'true');
+    $(".online_field").css('display', 'true');
     $(".local_field").attr('required', 'required');
     $(".online_field").attr('required', 'required');
   }
@@ -32,7 +32,7 @@ $('#business_type_select').on("change", function(e) {
     $(".local_field").removeAttr('required');
     $(".online_field").removeAttr('required');
   }
- 
+
 });
 
 // $(document).ready( function() {

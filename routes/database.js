@@ -8,7 +8,7 @@ var db = new sqlite3.Database('./database/spotmate.db', sqlite3.OPEN_READWRITE |
     console.log('Connected to the in-memory SQlite database.');
 });
 
-db.run('DROP TABLE coupons', function(err) {
+db.run('DROP TABLE IF EXISTS coupons', function(err) {
   if (err) throw err;
 
 });

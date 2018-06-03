@@ -1,15 +1,18 @@
 const express = require('express');
+const cookieSession = require('cookie-session');
 const ejs = require('ejs');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
+const cookieParser = require('cookie-parser');
+const keys = require('./routes/keys');
+const passport = require('passport');
+const morgan = require('morgan');
+const flash = require('connect-flash');
+const port = process.env.PORT || 8080;
 
-// Routes
-const indexRouter = require('./routes/index');
-const loginRouter = require('./routes/login');
-const setupRouter = require('./routes/setup');
-const dashboardRouter = require('./routes/dashboard');
-const couponRouter = require('./routes/coupon');
+// passport configuration
+require('./routes/passport')(passport);
 
 // view engine setup to be able to render the HTML files
 app.set('views', path.join(__dirname, 'views'));
@@ -20,14 +23,19 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-//app.use(expressLayouts);
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(cookieSession({
+    secret: keys.cookieKey,
+    resave: false,
+    saveUninitialized: false,
+    maxAge: 24 * 60 * 60 * 1000,
+}));
+app.use(passport.initialize());
+app.use(passport.session( { secret: keys.cookieKey }));
 
 // use Routes
-app.use('/', indexRouter);
-app.use('/login', loginRouter);
-app.use('/setup', setupRouter);
-app.use('/dashboard', dashboardRouter);
-app.use('/coupon', couponRouter);
+require('./routes/routes')(app, passport);
 
 // starts listining on port 8080
 // found at localhost:8080
