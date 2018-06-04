@@ -1,5 +1,7 @@
 const mailer = require('./mailer');
 const db = require('./database');
+const mongoose = require('mongoose');
+const Merchant = require('../models/merchant');
 
 module.exports = function(app, passport) {
 
@@ -38,7 +40,6 @@ module.exports = function(app, passport) {
   // CONTACT FORM ========================
   // =====================================
   app.post('/contact', function(req, res) {
-    console.log(req.query);
     let msg = 'Contact Entry' + '\n'
             + 'Business Name: ' + req.body.contact_name + '\n'
             + 'Business Phone: ' + req.body.contact_email + '\n'
@@ -78,12 +79,19 @@ module.exports = function(app, passport) {
   });
 
   app.post('/setup/:id', function(req, res) {
-    merchant = {
+    const merchant = new Merchant({
+      _id: mongoose.Types.ObjectId(),
       name: req.body.name,
       email: req.body.email,
       password: req.body.password
-    }
-    db.addMerchant(merchant);
+    });
+
+    merchant.save(function (err) {
+      if (err) {
+        console.log(err);
+        throw err;
+      }
+    });
 
     res.redirect('/login');
   });

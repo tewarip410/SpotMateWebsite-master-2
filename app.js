@@ -10,6 +10,9 @@ const passport = require('passport');
 const morgan = require('morgan');
 const flash = require('connect-flash');
 const port = process.env.PORT || 8080;
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb+srv://spotmate-worker:qwerty123@cluster0-dy9kc.mongodb.net/test?retryWrites=true');
 
 // passport configuration
 require('./routes/passport')(passport);
