@@ -1,78 +1,67 @@
 <%- include('header'); -%>
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Business</a>
-        </li>
-        <li class="breadcrumb-item active">Dashboard</li>
-      </ol>
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-table"></i> Your Coupons </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered"  width="100%" cellspacing="0">
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Redemed</th>
-                        <th>Remaining</th>
-                        <th></th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <% coupons.forEach(function(coupon) { %>
-                        <tr>
-                          <td><%= coupon.name %></td>
-                          <td><%= coupon.description %></td>
-                          <td><%= coupon.redemed %></td>
-                          <td><%= coupon.remaining %></td>
-                          <td>
-                            <form method="POST" action="/merchant/edit-coupon/<%= coupon._id %>">
-                              <button class="btn btn-primary" type="submit"> Edit </button>
-                            </form>
-                          </td>
-                          <td>
-                            <form method="POST" action="/merchant/delete-coupon/<%= coupon._id %>">
-                              <button class="btn btn-danger" type="submit"> Delete </button>
-                            </form>
-                          </td>
-                        </tr>
-                      <% }); %>
-                      </tbody>
-                    </table>
-                  </div>
+
+<!-- DATA TABLE-->
+<section class="p-t-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="title-5 m-b-35">manage coupons</h3>
+                <div class="table-data__tool">
+                    <div class="table-data__tool-left"></div>
+                    <div class="table-data__tool-right">
+                      <a href="/merchant/add-coupon">
+                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>add item</button></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-              </div>
+                <div class="table-responsive table-responsive-data2">
+                    <table class="table table-data2">
+                        <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>description</th>
+                                <th>date</th>
+                                <th>status</th>
+                                <th>redemed</th>
+                                <th>remaining</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <% coupons.forEach(function(coupon) { %>
+                            <tr class="tr-shadow">
+                                <td><%= coupon.name %></td>
+                                <td><%= coupon.description %></td>
+                                <td>2018-09-27 02:12</td>
+                                <td><span class="status--process">Processed</span></td>
+                                <td><%= coupon.redemed %></td>
+                                <td><%= coupon.remaining %></td>
+                                <td>
+                                    <div class="table-data-feature">
+                                      <form method="POST" action="/merchant/edit-coupon/<%= coupon._id %>">
+
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                      </form>
+                                      <form method="POST" action="/merchant/delete-coupon/<%= coupon._id %>">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                      </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>
+
+                          <% }); %>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-          <!-- Card Columns Example Social Feed-->
-
-        <div class="col-lg-4"></div>
-      </div>
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
-
-    <%- include('footer'); -%>
-    <script type="text/JavaScript">
-    //const ejs = require('ejs');
-
-    // Chart.js scripts
-    // -- Set new default font family and font color to mimic Bootstrap's default styling
-    Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-    Chart.defaults.global.defaultFontColor = '#292b2c';
-    // -- Area Chart Example
-
-    // -- Pie Chart Example
-    var ctx = document.getElementById("myPieChart");
-    var data = JSON.parse('<%- JSON.stringify(data) %>');
-    var myPieChart = new Chart(ctx, {
-      type: 'pie',
-      data: data
-    });
-
-    </script>
+        </div>
+    </div>
+</section>
+<!-- END DATA TABLE-->
+<%- include('footer'); -%>
