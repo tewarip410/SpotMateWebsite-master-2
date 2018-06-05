@@ -1,40 +1,48 @@
 <%- include('header'); -%>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="#">Business</a>
-      </li>
-      <li class="breadcrumb-item active">Add Coupon</li>
-    </ol>
-    <form role="form" method="POST" action="/merchant/add-coupon">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-              <label>Coupon Name</label>
-              <input name="name" class="form-control" required>
+<!-- STATISTIC CHART-->
+<section class="statistic-chart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="title-5 m-b-35">add coupon</h3>
             </div>
-            <div class="form-group">
-              <label>Description</label>
-              <textarea name="description" class="form-control" rows="5" required></textarea>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="form-group">
-              <label>Remaining Coupons</label>
-              <input name="remaining" type="number" class="form-control" required>
-            </div>
-            <div class="form-group">
-              <label>Coupons Redemed</label>
-              <input name="redemed" type="number" class="form-control" required>
-            </div>
-            <div class="form-group">
-              <label>Coupon Icon</label>
-              <input type="file">
-            </div>
-          </div>
         </div>
-        <button type="submit" class="btn btn-info">Submit Button</button>
-        <button type="reset" class="btn btn-warning">Reset Button</button>
-    </form>
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <form role="form" method="POST" action="/merchant/add-coupon">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Coupon Name</label>
+                        <input name="name" class="form-control" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="description" class="form-control" rows="2" required></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label>Remaining Coupons</label>
+                        <input name="remaining" type="number" class="form-control" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Coupons Redemed</label>
+                        <input name="redemed" type="number" class="form-control" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Coupon Icon</label>
+                        <input type="file">
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-info">Submit Button</button>
+                  <button type="reset" class="btn btn-warning">Reset Button</button>
+              </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- /#page-wrapper -->
 <%- include('footer'); -%>
