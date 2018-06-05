@@ -1,18 +1,16 @@
-const db = require('./database');
 const localStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
-const Merchant = require('../models/merchant');
+const User = require('../models/user');
 const Coupon = require('../models/coupon');
 
 module.exports = function(passport) {
-  passport.serializeUser(function(merchant, done) {
-    done(null, merchant._id);
+  passport.serializeUser(function(user, done) {
+    done(null, user._id);
   });
 
   passport.deserializeUser(function(id, done) {
-    Merchant.findOne({_id: id}, function(err, merchant){
-      if (err) throw err;
-      done(null, merchant);
+    User.findOne({_id: id}, function(err, user){
+      done(err, user);
     });
   });
 
@@ -24,14 +22,14 @@ module.exports = function(passport) {
 
     function(req, email, password, done) {
       process.nextTick(function() {
-        Merchant.findOne({ email: email, password: password }, function(err, merchant){
+        User.findOne({ email: email, password: password }, function(err, user){
           if (err) {
             return done(err);
           }
-          if (!merchant) {
+          if (!user) {
             return done(null, false);
           }
-          return done(null, merchant);
+          return done(null, user);
         })
       });
     }

@@ -1,17 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const db = require('./database');
 const mongoose = require('mongoose');
-const Merchant = require('../models/merchant');
+const User = require('../models/user');
 const Coupon = require('../models/coupon');
-
-
 
 // =====================================
 // DASHBOARD ===========================
 // =====================================
 router.get('/dashboard', isLoggedIn, function(req, res, next) {
-  Coupon.find().exec(function(err, coupons) {
+  Coupon.find({user_id: req.user._id}).exec(function(err, coupons) {
     const colors = ['#007bff', '#dc3545', '#ffc107', '#28a745'];
 
     const data = {
@@ -40,6 +37,7 @@ router.post('/add-coupon', function(req, res) {
 
   const coupon = new Coupon( {
     _id: new mongoose.Types.ObjectId(),
+    user_id: req.user._id,
     name: req.body.name,
     description: req.body.description,
     redemed: req.body.redemed,
@@ -68,7 +66,7 @@ router.post('/delete-coupon/:id', function(req, res) {
 });
 
 router.get('/manage-coupons', isLoggedIn, function(req, res, next) {
-  Coupon.find().exec(function(err, coupons) {
+  Coupon.find({user_id: req.user._id}).exec(function(err, coupons) {
     const colors = ['#007bff', '#dc3545', '#ffc107', '#28a745', '#007bff', '#dc3545', '#ffc107', '#28a745'];
 
     const data = {

@@ -1,7 +1,6 @@
 const mailer = require('./mailer');
-const db = require('./database');
 const mongoose = require('mongoose');
-const Merchant = require('../models/merchant');
+const User = require('../models/user');
 
 module.exports = function(app, passport) {
 
@@ -74,26 +73,32 @@ module.exports = function(app, passport) {
   app.get('/setup/:id', function(req, res, next) {
     //let id = req.params.id;
     if (true) {
-      res.render('setup');
+      res.render('setup', {error: undefined});
     };
   });
 
   app.post('/setup/:id', function(req, res) {
-    const merchant = new Merchant({
-      _id: mongoose.Types.ObjectId(),
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
-    });
+    User.findOne({ email: req.body.email }, function(err, user) {
+      if (err) throw err;
+      if(user) {
+        res.render('setup', {error: 'This email has already been registered!'});
+      } else {
+        const user = new User({
+          _id: mongoose.Types.ObjectId(),
+          name: req.body.name,
+          email: req.body.email,
+          password: req.body.password
+        });
 
-    merchant.save(function (err) {
-      if (err) {
-        console.log(err);
-        throw err;
+        user.save(function (err) {
+          if (err) {
+            console.log(err);
+            throw err;
+          }
+        });
+        res.redirect('/login');
       }
-    });
-
-    res.redirect('/login');
+    })
   });
 
 }
