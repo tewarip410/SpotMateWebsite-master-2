@@ -128,9 +128,13 @@ button, input, optgroup, select, textarea {
 }
 
 .contactcontainer .form-group{
-	margin: 20px 150px;
+	margin: 20px;
 }
-
+/* 
+.contactcontainer .form-group input{
+	width: 60%;
+}
+ */
 .contactcontainer .btn{
 	width: 150px;
 	letter-spacing: 2px;
