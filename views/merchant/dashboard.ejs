@@ -1,97 +1,78 @@
 <%- include('header'); -%>
-<!-- WELCOME-->
-<section class="welcome p-t-10">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="title-4">Welcome Back!
-                </h1>
-                <hr class="line-seprate">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Business</a>
+        </li>
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+      <!-- Icon Cards-->
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-table"></i> Your Coupons</div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered"  width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Redemed</th>
+                        <th>Remaining</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% coupons.forEach(function(coupon) { %>
+                        <tr>
+                          <td><%= coupon.name %></td>
+                          <td><%= coupon.description %></td>
+                          <td><%= coupon.redemed %></td>
+                          <td><%= coupon.remaining %></td>
+                        </tr>
+                        <% }); %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+              </div>
             </div>
-        </div>
-    </div>
-</section>
-<!-- END WELCOME-->
+          <!-- Card Columns Example Social Feed-->
 
-<!-- STATISTIC-->
-<section class="statistic statistic2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-lg-4">
-                <div class="statistic__item statistic__item--green">
-                    <h2 class="number">32</h2>
-                    <span class="desc">Unique Coupon Buyers</span>
-                    <div class="icon">
-                        <i class="zmdi zmdi-account-o"></i>
-                    </div>
-                </div>
+        <div class="col-lg-4">
+          <!-- Example Pie Chart Card-->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-pie-chart"></i> Coupons Redemed </div>
+            <div class="card-body">
+              <canvas id="myPieChart" width="100%" height="100"></canvas>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="statistic__item statistic__item--orange">
-                    <h2 class="number">12</h2>
-                    <span class="desc">Total Coupons Redemed</span>
-                    <div class="icon">
-                        <i class="zmdi zmdi-shopping-cart"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="statistic__item statistic__item--blue">
-                    <h2 class="number">4</h2>
-                    <span class="desc">this week</span>
-                    <div class="icon">
-                        <i class="zmdi zmdi-calendar-note"></i>
-                    </div>
-                </div>
-            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          </div>
         </div>
-    </div>
-</section>
-<!-- END STATISTIC-->
+      </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
 
-<!-- STATISTIC CHART-->
-<section class="statistic-chart">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="title-5 m-b-35">statistics (graphs coming soon)</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-lg-8">
-                <!-- TOP CAMPAIGN-->
-                <div class="top-campaign">
-                    <h3 class="title-3 m-b-30">Coupons</h3>
-                    <div class="table-responsive">
-                        <table class="table table-top-campaign">
-                          <tbody>
-                            <tr>
-                              <th>Name</th>
-                              <th>Description</th>
-                              <th>Redemed</th>
-                              <th>Remaining</th>
-                              <th></th>
-                            </tr>
-                          </tbody>
-                          <tbody>
-                            <% coupons.forEach(function(coupon) { %>
-                              <tr>
-                                <td><%= coupon.name %></td>
-                                <td><%= coupon.description %></td>
-                                <td><%= coupon.redemed %></td>
-                                <td><%= coupon.remaining %></td>
-                                <td></td>
-                              </tr>
-                              <% }); %>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!-- END TOP CAMPAIGN-->
-            </div>
-        </div>
-    </div>
-</section>
-<!-- END STATISTIC CHART-->
+    <%- include('footer'); -%>
+    <script type="text/JavaScript">
+    //const ejs = require('ejs');
 
-<%- include('footer'); -%>
+    // Chart.js scripts
+    // -- Set new default font family and font color to mimic Bootstrap's default styling
+    Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#292b2c';
+    // -- Area Chart Example
+
+
+    // -- Pie Chart Example
+    var ctx = document.getElementById("myPieChart");
+    var data = JSON.parse('<%- JSON.stringify(data) %>');
+    var myPieChart = new Chart(ctx, {
+      type: 'pie',
+      data: data
+    });
+
+    </script>

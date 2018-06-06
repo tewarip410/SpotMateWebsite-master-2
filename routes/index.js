@@ -73,7 +73,7 @@ module.exports = function(app, passport) {
   app.get('/setup/:id', function(req, res, next) {
     //let id = req.params.id;
     if (true) {
-      res.render('register', {error: undefined});
+      res.render('setup', {error: undefined});
     };
   });
 
@@ -81,7 +81,7 @@ module.exports = function(app, passport) {
     User.findOne({ email: req.body.email }, function(err, user) {
       if (err) throw err;
       if(user) {
-        res.render('register', {error: 'This email has already been registered!'});
+        res.render('setup', {error: 'This email has already been registered!'});
       } else {
         const user = new User({
           _id: mongoose.Types.ObjectId(),
