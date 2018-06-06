@@ -32,7 +32,7 @@
                           <td><%= coupon.redemed %></td>
                           <td><%= coupon.remaining %></td>
                           <td>
-                            <form method="POST" action="/merchant/edit-coupon/<%= coupon._id %>">
+                            <form method="GET" action="/merchant/edit-coupon/<%= coupon._id %>">
                               <button class="btn btn-primary" type="submit"> Edit </button>
                             </form>
                           </td>

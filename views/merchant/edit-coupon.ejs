@@ -3,28 +3,28 @@
       <li class="breadcrumb-item">
         <a href="#">Business</a>
       </li>
-      <li class="breadcrumb-item active">Add Coupon</li>
+      <li class="breadcrumb-item active">Edit Coupon</li>
     </ol>
-    <form role="form" method="POST" action="/merchant/add-coupon">
+    <form role="form" method="POST" action="/merchant/edit-coupon/<%= coupon._id%>">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
               <label>Coupon Name</label>
-              <input name="name" class="form-control" required>
+              <input name="name" class="form-control" value="<%= coupon.name %>" required>
             </div>
             <div class="form-group">
               <label>Description</label>
-              <textarea name="description" class="form-control" rows="3" required></textarea>
+              <textarea name="description" class="form-control" rows="3" required><%= coupon.description %></textarea>
             </div>
           </div>
           <div class="col-md-2">
             <div class="form-group">
               <label>Total Coupons</label>
-              <input name="total" type="number" class="form-control" required>
+              <input name="total" type="number" class="form-control" value="<%= coupon.remaining + coupon.redemed %>" required>
             </div>
             <div class="form-group">
               <label>Remaining Coupons</label>
-              <input name="remaining" type="number" class="form-control" required>
+              <input name="remaining" type="number" class="form-control" value="<%= coupon.remaining %>" required>
             </div>
 
             <div class="form-group">

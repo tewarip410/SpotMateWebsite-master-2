@@ -34,27 +34,53 @@ router.get('/add-coupon', isLoggedIn, function(req, res, next) {
 });
 
 router.post('/add-coupon', function(req, res) {
+  Coupon.find({ user_id: req.user._id }, function(err, coupons) {
+    if (coupons.length >= 3) {
+      res.redirect('/merchant/dashboard');
+    } else {
+      const coupon = new Coupon( {
+        _id: new mongoose.Types.ObjectId(),
+        user_id: req.user._id,
+        name: req.body.name,
+        description: req.body.description,
+        redemed: req.body.total - req.body.remaining,
+        remaining: req.body.remaining
+      })
 
-  const coupon = new Coupon( {
-    _id: new mongoose.Types.ObjectId(),
-    user_id: req.user._id,
-    name: req.body.name,
-    description: req.body.description,
-    redemed: req.body.redemed,
-    remaining: req.body.remaining
-  })
-
-  coupon
-    .save()
-    .then(function(result) {
-      console.log(result);
-    })
-    .catch(function(err) {
-      console.log(err)
-    })
-  res.redirect('/merchant/dashboard');
+      coupon
+        .save()
+        .then(function(result) {
+          console.log(result);
+        })
+        .catch(function(err) {
+          console.log(err)
+        })
+        res.redirect('/merchant/dashboard');
+    }
+  });
 
 });
+
+router.get('/edit-coupon/:id', function(req, res, next) {
+  const id = req.params.id;
+  Coupon.findOne({ _id: id, user_id: req.user._id}, function(err, coupon) {
+    res.render('./merchant/edit-coupon', {
+      coupon: coupon
+    });
+  });
+});
+
+router.post('/edit-coupon/:id', function(req, res, next) {
+  const id = req.params.id;
+  Coupon.findOne({ _id: id, user_id: req.user._id}, function(err, coupon) {
+    coupon.name = req.body.name;
+    coupon.description = req.body.description;
+    coupon.redemed = req.body.total - req.body.remaining;
+    coupon.remaining = req.body.remaining;
+    coupon.save();
+  })
+  res.redirect('/merchant/manage-coupons');
+})
 
 router.post('/delete-coupon/:id', function(req, res) {
   const id = req.params.id;

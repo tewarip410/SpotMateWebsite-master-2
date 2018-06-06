@@ -36,23 +36,22 @@
                     </table>
                   </div>
                 </div>
-                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                <div class="card-footer small text-muted"></div>
               </div>
             </div>
           <!-- Card Columns Example Social Feed-->
-
         <div class="col-lg-4">
-          <!-- Example Pie Chart Card-->
+          <!-- Example Bar Chart Card-->
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-pie-chart"></i> Coupons Redemed </div>
-            <div class="card-body">
-              <canvas id="myPieChart" width="100%" height="100"></canvas>
+              <i class="fa fa-bar-chart"></i>Coupon Inventory</div>
+              <div class="card-body">
+                <canvas id="myBarChart" width="100" height="50"></canvas>
+              </div>
+              <div class="card-footer small text-muted"></div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
         </div>
-      </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
 
@@ -68,11 +67,66 @@
 
 
     // -- Pie Chart Example
+    var coupons = JSON.parse('<%- JSON.stringify(coupons) %>');
+    const colors = ['#007bff', '#dc3545', '#ffc107', '#28a745'];
+
     var ctx = document.getElementById("myPieChart");
-    var data = JSON.parse('<%- JSON.stringify(data) %>');
+    if (ctx) {
     var myPieChart = new Chart(ctx, {
       type: 'pie',
-      data: data
+      data: {
+        labels: coupons.map(coupon => coupon.name),
+        datasets: [{
+          data: coupons.map(coupon => coupon.redemed),
+          backgroundColor: colors.slice(0, coupons.length),
+        }],
+      }
     });
+  }
+
+    var ctx = document.getElementById("myBarChart");
+    if (ctx) {
+      var myLineChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: coupons.map(coupon => coupon.name),
+          datasets: [{
+            label: "Remaining",
+            backgroundColor: colors[0],
+            borderColor: colors[0],
+            data: coupons.map(coupon => coupon.remaining),
+          },
+          {
+            label: "Redemed",
+            backgroundColor: colors[1],
+            borderColor: colors[1],
+            data: coupons.map(coupon => coupon.redemed),
+          },],
+        },
+        options: {
+          responsive: true,
+          legend: {
+						position: 'top',
+					},
+          scales: {
+            xAxes: [{
+              gridLines: {
+                display: false
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                min: 0,
+              //  max: 15000,
+              //  maxTicksLimit: 5
+              },
+              gridLines: {
+                display: true
+              }
+            }],
+          }
+        }
+      });
+}
 
     </script>
